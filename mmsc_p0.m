@@ -9,15 +9,14 @@ function [ endValue ] = mmsc_p0( h, u, s, c )
 
     sum1 = 0;
     for i = 0:(s-1)
-        sum1 = sum1 + ((1 / factorial(i)) * ((h/u)^i));
+        sum1 = sum1 + (((1 / factorial(i)) * ((h/u)^i)));
     end
-    
+    sum1 = sum1 + ((1/factorial(s)) * ((h/u)^s));
     sum2 = 0;
     for j = s:(s+c)
-        sum2 = sum2 + (h/(s*u)^(j-s));
+        sum2 = sum2 + ((h/(s*u))^(j-s));
     end
-    
-    endValue = sum1 + ((1 / factorial(s)) * ((h/u)^s) * sum2);
+    endValue = sum1 * sum2;
     
     endValue = endValue^(-1);
      
